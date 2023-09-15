@@ -1,0 +1,189 @@
+project "ICS 2024" 2023-09-18 - 2024-02-03 {
+}
+
+shift s40 "Part time shift" {
+  workinghours wed, thu, fri off
+}
+
+#########################################
+# Factor in 80% capacity due to OS course
+#########################################
+shift reduced "EDA093" {
+  workinghours mon - fri 09:00 - 15:30  // 80% capacity
+}
+
+
+resource konstantinos "konstantinos" {
+
+  vacation "WASP study trip USA" 2023-09-23 +7d
+
+  vacation "Christmas Holidays" 2023-12-22 - 2024-01-02
+
+  vacation "WASP Winter Conference" 2024-01-09 +3d
+
+  shifts reduced 2023-09-18 - 2023-10-20
+
+}
+
+
+task ics "ICS 2024" {
+  purge allocate
+  allocate konstantinos
+
+
+  #######################
+  # Milestones
+  #######################
+  task preliminary "Preliminary Results" {
+    milestone
+    depends ics.data.simple
+    maxend 2023-12-22
+  }
+
+  task abstract_sub "Abstract Submission" {
+    milestone
+    depends ics.paper.abstract
+    maxend 2024-01-27
+  }
+
+  task paper_sub "Paper Submission" {
+    milestone
+    depends ics.paper
+    maxend 2024-02-03
+  }
+
+  #######################
+  # Benchmarks
+  #######################
+  task find_scalability "Find benchmarks to demo scalability" {
+    start 2023-09-18
+
+    task check_gnn "Check GNNs" {
+      effort 5d
+    }
+    task check_llm "Check LLMs" {
+      effort 5d
+    }
+    task check_graph_db "Check Graph DBs" {
+      effort 5d
+    }
+  }
+
+  #######################
+  # Compiler
+  #######################
+  task design_compiler "Design Compiler" {
+    depends !find_scalability
+
+    task identify_isa "Identify ISA extensions" {
+      effort 5d
+    }
+    task solve_cyclic "Handle cyclic dependencies between slices" {
+      effort 5d
+    }
+    task write_slice "Add LLVM pass for slicing" {
+      effort 5d
+    }
+  }
+
+  #######################
+  # Micro
+  #######################
+  task micro "Design Micro" {
+
+    task init "Initiate design discussions on micro" {
+      depends ics.design_compiler.identify_isa
+      priority 600
+      effort 2d
+    }
+
+    task isa "Map ISA to micro" {
+      priority 400
+      effort 18d
+    }
+  }
+
+  #######################
+  # Data
+  #######################
+  task data "Collect Data" {
+
+    task data_gem5 "Add ISA extensions in gem5" {
+      depends ics.micro.isa
+      effort 5d
+    }
+
+    task simple "Collect data for simple benchmarks" {
+      depends !data_gem5
+      effort 4d
+    }
+
+    task gnn "Collect data from GNNs benchmarks" {
+      depends !simple
+      effort 4d
+    }
+
+    task llm "Collect data from LLMs benchmarks" {
+      depends !simple
+      effort 4d
+    }
+
+  }
+
+  #######################
+  # Paper
+  #######################
+  task paper "Write Paper" {
+
+    task abstract "Write abstract" {
+      depends ics.micro.isa
+      effort 2d
+    }
+    task intro "Write intro" {
+      depends !abstract
+      effort 3d
+    }
+    task body "Write body" {
+      depends ics.micro
+      effort 5d
+    }
+    task res "Write Meth/Res" {
+      depends ics.data
+      effort 5d
+    }
+  }
+}
+
+
+textreport report "Plan" {
+  formats html
+  header '== ICS 2024 =='
+
+  center -8<-
+    [#Plan Plan] | [#Resource_Allocation Resource Allocation]
+    ----
+    === Plan ===
+    <[report id="plan"]>
+    ----
+    === Resource Allocation ===
+    <[report id="resourceGraph"]>
+  ->8-
+}
+
+# A traditional Gantt chart with a project overview.
+taskreport plan "" {
+  headline "Project Plan"
+  columns bsi, name, start, end, effort, chart
+  loadunit shortauto
+  hideresource 1
+}
+
+# A graph showing resource allocation. It identifies whether each
+# resource is under- or over-allocated for.
+resourcereport resourceGraph "" {
+  headline "Resource Allocation Graph"
+  columns no, name, effort, weekly
+  loadunit shortauto
+  hidetask ~(isleaf() & isleaf_())
+  sorttasks plan.start.up
+}
