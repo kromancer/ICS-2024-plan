@@ -1,15 +1,15 @@
 project "ICS 2024" 2023-09-18 - 2024-02-03 {
 }
 
-shift s40 "Part time shift" {
-  workinghours wed, thu, fri off
-}
-
 #########################################
 # Factor in 80% capacity due to OS course
 #########################################
 shift reduced "EDA093" {
   workinghours mon - fri 09:00 - 15:30  // 80% capacity
+}
+
+shift super_assist "Intro Assistance" {
+  workinghours fri 09:00 - 13:00  // half a day per week
 }
 
 
@@ -25,6 +25,13 @@ resource konstantinos "konstantinos" {
 
 }
 
+resource angelos "Angelos" {
+  shifts super_assist 2023-11-20 - 2023-12-22
+}
+
+resource per "Per" {
+  shifts super_assist 2023-11-20 - 2023-12-22
+}
 
 task ics "ICS 2024" {
   purge allocate
@@ -34,7 +41,7 @@ task ics "ICS 2024" {
   #######################
   # Milestones
   #######################
-  task preliminary "Preliminary Results" {
+  task preliminary "Preliminary Results: Go/NoGo for ICS" {
     milestone
     depends ics.data.simple
     maxend 2023-12-22
@@ -48,7 +55,7 @@ task ics "ICS 2024" {
 
   task paper_sub "Paper Submission" {
     milestone
-    depends ics.paper
+    depends ics.polish
     maxend 2024-02-03
   }
 
@@ -78,9 +85,11 @@ task ics "ICS 2024" {
     task identify_isa "Identify ISA extensions" {
       effort 5d
     }
+
     task solve_cyclic "Handle cyclic dependencies between slices" {
       effort 5d
     }
+
     task write_slice "Add LLVM pass for slicing" {
       effort 5d
     }
@@ -99,7 +108,7 @@ task ics "ICS 2024" {
 
     task isa "Map ISA to micro" {
       priority 400
-      effort 18d
+      effort 15d
     }
   }
 
@@ -135,23 +144,36 @@ task ics "ICS 2024" {
   #######################
   task paper "Write Paper" {
 
-    task abstract "Write abstract" {
-      depends ics.micro.isa
-      effort 2d
-    }
     task intro "Write intro" {
-      depends !abstract
-      effort 3d
+      start 2023-11-20
+      allocate konstantinos, angelos, per
+      effort 8d
     }
+
     task body "Write body" {
       depends ics.micro
-      effort 5d
+      effort 4d
     }
+
     task res "Write Meth/Res" {
       depends ics.data
+      effort 4.75d
+    }
+
+    task abstract "Write abstract" {
+      depends !res
+      allocate konstantinos, angelos, per
       effort 5d
     }
   }
+
+
+  task polish "Gap between abstract/paper sub: Polishing" {
+    depends ics.paper
+    allocate konstantinos, angelos, per
+    effort 14d
+  }
+
 }
 
 
