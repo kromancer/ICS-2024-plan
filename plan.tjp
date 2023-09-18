@@ -12,7 +12,6 @@ shift super_assist "Intro Assistance" {
   workinghours fri 09:00 - 13:00  // half a day per week
 }
 
-
 resource konstantinos "konstantinos" {
 
   vacation "WASP study trip USA" 2023-09-23 +7d
@@ -176,8 +175,15 @@ task ics "ICS 2024" {
 
 }
 
+# Export the project in mspxml
+export "plan-MS-Project" {
+  formats mspxml
+  definitions *
+  taskattributes *
+  hideresource 0
+}
 
-textreport report "Plan" {
+textreport report "plan" {
   formats html
   header '== ICS 2024 =='
 
@@ -190,6 +196,13 @@ textreport report "Plan" {
     === Resource Allocation ===
     <[report id="resourceGraph"]>
   ->8-
+}
+
+# A simplified table-friendly overview
+taskreport plan_table "plan-table" {
+  formats csv
+  loadunit days
+  columns name, start, end, effort
 }
 
 # A traditional Gantt chart with a project overview.
