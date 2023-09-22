@@ -64,13 +64,13 @@ task ics "ICS 2024" {
   task find_scalability "Find benchmarks to demo scalability" {
     start 2023-09-18
 
-    task check_gnn "Check GNNs" {
+    task check_gnn "Check Sparse Linear Algebra" {
       effort 5d
     }
     task check_llm "Check LLMs" {
       effort 5d
     }
-    task check_graph_db "Check Graph DBs" {
+    task check_graph_db "Check GNNs & Graph DBs" {
       effort 5d
     }
   }
@@ -202,7 +202,7 @@ textreport report "plan" {
 taskreport plan_table "plan-table" {
   formats csv
   loadunit days
-  columns name, start, end, effort
+  columns bsi, name, start, end, effort
 }
 
 # A traditional Gantt chart with a project overview.

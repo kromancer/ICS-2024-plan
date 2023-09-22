@@ -1,27 +1,27 @@
-"Name";"Start";"End";"Effort"
-"ICS 2024";"2023-09-18";"2024-02-02";99.8
-"  Find benchmarks to demo scalability";"2023-09-18";"2023-10-18";15.0
-"    Check GNNs";"2023-09-18";"2023-10-02";5.0
-"    Check LLMs";"2023-10-02";"2023-10-10";5.0
-"    Check Graph DBs";"2023-10-10";"2023-10-18";5.0
-"  Design Compiler";"2023-10-18";"2023-11-10";15.0
-"    Identify ISA extensions";"2023-10-18";"2023-10-25";5.0
-"    Handle cyclic dependencies between slices";"2023-10-27";"2023-11-03";5.0
-"    Add LLVM pass for slicing";"2023-11-03";"2023-11-10";5.0
-"  Design Micro";"2023-10-25";"2023-12-06";17.0
-"    Initiate design discussions on micro";"2023-10-25";"2023-10-27";2.0
-"    Map ISA to micro";"2023-11-10";"2023-12-06";15.0
-"  Write Paper";"2023-11-20";"2024-01-26";21.8
-"    Write intro";"2023-11-20";"2023-11-22";8.0
-"    Write body";"2024-01-03";"2024-01-12";4.0
-"    Write Meth/Res";"2024-01-18";"2024-01-24";4.8
-"    Write abstract";"2024-01-24";"2024-01-26";5.0
-"  Collect Data";"2023-12-06";"2024-01-18";17.0
-"    Add ISA extensions in gem5";"2023-12-06";"2023-12-13";5.0
-"    Collect data for simple benchmarks";"2023-12-13";"2023-12-19";4.0
-"    Collect data from GNNs benchmarks";"2023-12-19";"2024-01-03";4.0
-"    Collect data from LLMs benchmarks";"2024-01-12";"2024-01-18";4.0
-"  Preliminary Results: Go/NoGo for ICS";"2023-12-19";"2023-12-19";0.0
-"  Abstract Submission";"2024-01-26";"2024-01-26";0.0
-"  Gap between abstract/paper sub: Polishing";"2024-01-26";"2024-02-02";14.0
-"  Paper Submission";"2024-02-02";"2024-02-02";0.0
+"BSI";"Name";"Start";"End";"Effort"
+1;"ICS 2024";"2023-09-18";"2024-02-02";99.8
+1.4;"  Find benchmarks to demo scalability";"2023-09-18";"2023-10-18";15.0
+"1.4.1";"    Check Sparse Linear Algebra";"2023-09-18";"2023-10-02";5.0
+"1.4.2";"    Check LLMs";"2023-10-02";"2023-10-10";5.0
+"1.4.3";"    Check GNNs & Graph DBs";"2023-10-10";"2023-10-18";5.0
+1.5;"  Design Compiler";"2023-10-18";"2023-11-10";15.0
+"1.5.1";"    Identify ISA extensions";"2023-10-18";"2023-10-25";5.0
+"1.5.2";"    Handle cyclic dependencies between slices";"2023-10-27";"2023-11-03";5.0
+"1.5.3";"    Add LLVM pass for slicing";"2023-11-03";"2023-11-10";5.0
+1.6;"  Design Micro";"2023-10-25";"2023-12-06";17.0
+"1.6.1";"    Initiate design discussions on micro";"2023-10-25";"2023-10-27";2.0
+"1.6.2";"    Map ISA to micro";"2023-11-10";"2023-12-06";15.0
+1.8;"  Write Paper";"2023-11-20";"2024-01-26";21.8
+"1.8.1";"    Write intro";"2023-11-20";"2023-11-22";8.0
+"1.8.2";"    Write body";"2024-01-03";"2024-01-12";4.0
+"1.8.3";"    Write Meth/Res";"2024-01-18";"2024-01-24";4.8
+"1.8.4";"    Write abstract";"2024-01-24";"2024-01-26";5.0
+1.7;"  Collect Data";"2023-12-06";"2024-01-18";17.0
+"1.7.1";"    Add ISA extensions in gem5";"2023-12-06";"2023-12-13";5.0
+"1.7.2";"    Collect data for simple benchmarks";"2023-12-13";"2023-12-19";4.0
+"1.7.3";"    Collect data from GNNs benchmarks";"2023-12-19";"2024-01-03";4.0
+"1.7.4";"    Collect data from LLMs benchmarks";"2024-01-12";"2024-01-18";4.0
+1.1;"  Preliminary Results: Go/NoGo for ICS";"2023-12-19";"2023-12-19";0.0
+1.2;"  Abstract Submission";"2024-01-26";"2024-01-26";0.0
+1.9;"  Gap between abstract/paper sub: Polishing";"2024-01-26";"2024-02-02";14.0
+1.3;"  Paper Submission";"2024-02-02";"2024-02-02";0.0
