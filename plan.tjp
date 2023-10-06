@@ -64,13 +64,11 @@ task ics "ICS 2024" {
   task find_scalability "Find benchmarks to demo scalability" {
     start 2023-09-18
 
-    task check_gnn "Check Sparse Linear Algebra" {
-      effort 5d
+    task check_sla "Check Sparse Linear Algebra" {
+      effort 10d
     }
-    task check_llm "Check LLMs" {
-      effort 5d
-    }
-    task check_graph_db "Check GNNs & Graph DBs" {
+
+    task check_rest "Check LLMs & GNNs & Graph DBs" {
       effort 5d
     }
   }

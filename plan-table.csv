@@ -1,9 +1,8 @@
 "BSI";"Name";"Start";"End";"Effort"
 1;"ICS 2024";"2023-09-18";"2024-02-02";99.8
 1.4;"  Find benchmarks to demo scalability";"2023-09-18";"2023-10-18";15.0
-"1.4.1";"    Check Sparse Linear Algebra";"2023-09-18";"2023-10-02";5.0
-"1.4.2";"    Check LLMs";"2023-10-02";"2023-10-10";5.0
-"1.4.3";"    Check GNNs & Graph DBs";"2023-10-10";"2023-10-18";5.0
+"1.4.1";"    Check Sparse Linear Algebra";"2023-09-18";"2023-10-10";10.0
+"1.4.2";"    Check LLMs & GNNs & Graph DBs";"2023-10-10";"2023-10-18";5.0
 1.5;"  Design Compiler";"2023-10-18";"2023-11-10";15.0
 "1.5.1";"    Identify ISA extensions";"2023-10-18";"2023-10-25";5.0
 "1.5.2";"    Handle cyclic dependencies between slices";"2023-10-27";"2023-11-03";5.0
